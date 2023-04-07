@@ -993,7 +993,7 @@ abstract class ClusterBase extends Resource implements ICluster {
       throw new Error(`Invalid cdk8s chart. Must contain a 'toJson' method, but found ${typeof cdk8sChart.toJson}`);
     }
 
-    const manifest = new KubernetesManifest(this, id, {
+    const manifest = new KubernetesManifest(this, `manifest-${id}`, {
       cluster: this,
       manifest: cdk8sChart.toJson(),
       ...options,
